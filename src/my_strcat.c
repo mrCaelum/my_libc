@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** libs
+** my_libc
 ** File description:
 ** my_strcat
 */
@@ -19,8 +19,6 @@ char *my_strcat(char const *str1, char const *str2)
     if (!str2)
         return (my_strdup(str1));
     new = malloc(len + my_strlen(str2) + 1);
-    if (!new)
-        return (NULL);
     my_strcpy(new, str1);
     my_strcpy(new + len, str2);
     return (new);

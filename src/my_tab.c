@@ -18,8 +18,6 @@ char **my_str_split(char const *str, char separator)
         if (str[i] == separator)
             ++len;
     tab = malloc(sizeof(char *) * (len + 1));
-    if (!tab)
-        return (NULL);
     for (size_t i = 0, tmp = 0; i < len; ++i, str += tmp + 1) {
         tmp = my_cstrlen(str, separator);
         tab[i] = my_strndup(str, tmp);

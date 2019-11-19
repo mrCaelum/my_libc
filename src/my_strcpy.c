@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** libs
+** my_libc
 ** File description:
 ** my_strcpy
 */
