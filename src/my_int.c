@@ -1,27 +1,28 @@
 /*
 ** EPITECH PROJECT, 2019
-** libs
+** my_libc
 ** File description:
 ** my_int
 */
 
 #include "my_libc.h"
 
-int my_atoi(char *str)
+int my_atoi(char const *str)
 {
     int i = 0;
+    size_t pos = 0;
     bool is_neg = false;
 
     if (!str)
         return (0);
-    if (*str == '-') {
+    if (str[pos] == '-') {
         is_neg = true;
-        ++str;
+        ++pos;
     }
-    for (; *str; ++str) {
-        if (!my_strcontains("0123456789", *str))
+    for (; str[pos]; ++pos) {
+        if (str[pos] < '0' || str[pos] > '9')
             return (0);
-        i = (i * 10) + (*str - 48);
+        i = (i * 10) + (str[pos] - 48);
     }
     if (is_neg)
         i = -i;
@@ -40,8 +41,6 @@ char *my_itoa(int i)
         tmp /= 10;
     len += is_neg;
     str = malloc(len + 1);
-    if (!str)
-        return (NULL);
     str[len] = 0;
     for (len -= 1; len > is_neg; --len, i /= 10)
         str[len] = i % 10 + 48;
@@ -51,21 +50,22 @@ char *my_itoa(int i)
     return (str);
 }
 
-unsigned int my_atou(char *str)
+size_t my_atou(char const *str)
 {
-    unsigned int i = 0;
+    size_t pos = 0;
+    size_t i = 0;
 
     if (!str)
         return (0);
-    for (; *str; ++str) {
-        if (!my_strcontains("0123456789", *str))
+    for (; str[pos]; ++pos) {
+        if (str[pos] < '0' || str[pos] > '9')
             return (0);
-        i = (i * 10) + (*str - 48);
+        i = (i * 10) + (str[pos] - 48);
     }
     return (i);
 }
 
-char *my_utoa(unsigned int i)
+char *my_utoa(size_t i)
 {
     char *str;
     size_t len = !i;
@@ -73,8 +73,6 @@ char *my_utoa(unsigned int i)
     for (int tmp = i; tmp; ++len)
         tmp /= 10;
     str = malloc(len + 1);
-    if (!str)
-        return (NULL);
     str[len] = 0;
     for (len -= 1; len > 0; --len, i /= 10)
         str[len] = i % 10 + 48;
