@@ -56,6 +56,30 @@ Test(my_strf, negative_integer)
     free(str);
 }
 
+Test(my_strf, simple_unsigned)
+{
+    char *str = my_strf("Integer : %u :)", 15);
+
+    cr_assert_str_eq(str, "Integer : 15 :)");
+    free(str);
+}
+
+Test(my_strf, big_unsigned)
+{
+    char *str = my_strf("Integer : %u :)", 3000000000);
+
+    cr_assert_str_eq(str, "Integer : 3000000000 :)");
+    free(str);
+}
+
+Test(my_strf, simple_float)
+{
+    char *str = my_strf("Float : %f :)", 123.12345);
+
+    cr_assert_str_eq(str, "Float : 123.123450 :)");
+    free(str);
+}
+
 Test(my_strf, simple_char)
 {
     char *str = my_strf("He%cl%c !", 'l', 'o');
@@ -101,5 +125,46 @@ Test(my_strf, two_percent)
     char *str = my_strf("test %% test");
 
     cr_assert_str_eq(str, "test % test");
+    free(str);
+}
+
+Test(my_strf, hexa)
+{
+    char *str = my_strf("test %x OK", 123456);
+
+    cr_assert_str_eq(str, "test 1e240 OK");
+    free(str);
+}
+
+Test(my_strf, uhexa)
+{
+    char *str = my_strf("test %X OK", 151515);
+
+    cr_assert_str_eq(str, "test 24FDB OK");
+    free(str);
+}
+
+Test(my_strf, octal)
+{
+    char *str = my_strf("test %o OK", 151515);
+
+    cr_assert_str_eq(str, "test 447733 OK");
+    free(str);
+}
+
+Test(my_strf, binary)
+{
+    char *str = my_strf("test %b OK", 25);
+
+    cr_assert_str_eq(str, "test 11001 OK");
+    free(str);
+}
+
+Test(my_strf, pointer)
+{
+    int *i = (int *)123;
+    char *str = my_strf("test %p OK", i);
+
+    cr_assert_str_eq(str, "test 0x7b OK");
     free(str);
 }

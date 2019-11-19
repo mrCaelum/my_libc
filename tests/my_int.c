@@ -8,10 +8,10 @@
 #include <criterion/criterion.h>
 #include <stdlib.h>
 
-int my_atoi(char *);
+int my_atoi(char const *);
 char *my_itoa(int);
-unsigned int my_atou(char *);
-char *my_utoa(unsigned int);
+size_t my_atou(char const *);
+char *my_utoa(size_t);
 
 Test(my_atoi, if_null)
 {
