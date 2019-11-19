@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** libs
+** my_libc
 ** File description:
 ** my_strf_char
 */
@@ -26,9 +26,6 @@ void my_strf_char(va_list args, char **str)
 void my_strf_str(va_list args, char **str)
 {
     char const *i = va_arg(args, char const *);
-    char *tmp = *str;
 
-    *str = my_strcat(tmp, i);
-    if (*str)
-        free(tmp);
+    *str = my_stradd(*str, i);
 }

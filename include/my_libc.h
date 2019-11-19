@@ -11,6 +11,8 @@
     #include <stdlib.h>
     #include <stdbool.h>
 
+    #define ABS(x) (x < 0 ? -x : x)
+
     typedef unsigned char byte_t;
 
     /* MY_STRLEN.C */
@@ -33,6 +35,7 @@
     /* MY_STRADD.C */
     char *my_stradd(char *, char const *);
     char *my_strnadd(char *, char const *, size_t);
+    char *my_addnchar(char *, char, size_t);
 
     /* MY_STRCAT.C */
     char *my_strcat(char const *, char const *);
@@ -41,10 +44,20 @@
     char *my_strf(char const *, ...);
 
     /* MY_INT.C */
-    int my_atoi(char *);
+    int my_atoi(char const *);
     char *my_itoa(int);
-    unsigned int my_atou(char *);
-    char *my_utoa(unsigned int);
+    size_t my_atou(char const *);
+    char *my_utoa(size_t);
+
+    /* MY_FLOAT.C */
+    double my_atof(char const *);
+    char *my_ftoa(double, size_t);
+
+    /* MY_BASES.C */
+    char *my_tobase(size_t, char const *);
+
+    /* MY_MATH.C */
+    size_t my_power(size_t, size_t);
 
     /* MY_TAB.C */
     char **my_str_split(char const *, char);

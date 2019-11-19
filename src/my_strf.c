@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** libs
+** my_libc
 ** File description:
 ** my_strf
 */
@@ -10,27 +10,16 @@
 
 static const op_t ptr_tab[] = {
     {"d", &my_strf_int},
-    // {"ld", &my_strf_long},
     {"i", &my_strf_int},
-    // {"li", &my_strf_long},
-    // {"u", &my_strf_uint},
-    // {"lu", &my_strf_ulong},
+    {"u", &my_strf_uint},
     {"c", &my_strf_char},
     {"s", &my_strf_str},
-    // {"S", &string_with_hidden_char},
-    // {"x", &my_strf_hexa},
-    // {"lx", &hexa},
-    // {"llx", &hexa},
-    // {"hx", &hexa},
-    // {"hhx", &hexa},
-    // {"X", &my_strf_uhexa},
-    // {"lX", &upcase_hexa},
-    // {"llX", &upcase_hexa},
-    // {"hX", &upcase_hexa},
-    // {"hhX", &upcase_hexa},
-    // {"o", &octal},
-    // {"b", &binary},
-    // {"p", &pointer},
+    {"f", &my_strf_float},
+    {"x", &my_strf_hexa},
+    {"X", &my_strf_uhexa},
+    {"o", &my_strf_octal},
+    {"b", &my_strf_binary},
+    {"p", &my_strf_pointer},
     {NULL, NULL}
 };
 
