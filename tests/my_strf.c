@@ -56,6 +56,14 @@ Test(my_strf, negative_integer)
     free(str);
 }
 
+Test(my_strf, floating_point_integer)
+{
+    char *str = my_strf("Float : %.2i :)", 123);
+
+    cr_assert_str_eq(str, "Float : 123.00 :)");
+    free(str);
+}
+
 Test(my_strf, simple_unsigned)
 {
     char *str = my_strf("Integer : %u :)", 15);
@@ -72,11 +80,51 @@ Test(my_strf, big_unsigned)
     free(str);
 }
 
+Test(my_strf, floating_point_unsigned)
+{
+    char *str = my_strf("Float : %.3u :)", 63);
+
+    cr_assert_str_eq(str, "Float : 63.000 :)");
+    free(str);
+}
+
 Test(my_strf, simple_float)
 {
     char *str = my_strf("Float : %f :)", 123.12345);
 
     cr_assert_str_eq(str, "Float : 123.123450 :)");
+    free(str);
+}
+
+Test(my_strf, advanced_float)
+{
+    char *str = my_strf("Float : %.2f :)", 123.12345);
+
+    cr_assert_str_eq(str, "Float : 123.12 :)");
+    free(str);
+}
+
+Test(my_strf, sci_float)
+{
+    char *str = my_strf("Float : %e :)", 123.456789);
+
+    cr_assert_str_eq(str, "Float : 1.234567e+2 :)");
+    free(str);
+}
+
+Test(my_strf, sci_float2)
+{
+    char *str = my_strf("Float : %e :)", 0.0012345678);
+
+    cr_assert_str_eq(str, "Float : 1.234567e-3 :)");
+    free(str);
+}
+
+Test(my_strf, advanced_sci_float)
+{
+    char *str = my_strf("Float : %.2e :)", 0.0012345678);
+
+    cr_assert_str_eq(str, "Float : 1.23e-3 :)");
     free(str);
 }
 
@@ -166,5 +214,21 @@ Test(my_strf, pointer)
     char *str = my_strf("test %p OK", i);
 
     cr_assert_str_eq(str, "test 0x7b OK");
+    free(str);
+}
+
+Test(my_strf, simple_invalid)
+{
+    char *str = my_strf("ARGH ! %a :(", 71);
+
+    cr_assert_str_eq(str, "ARGH ! %a :(");
+    free(str);
+}
+
+Test(my_strf, floating_point_error)
+{
+    char *str = my_strf("Float : %.2a :)", 123);
+
+    cr_assert_str_eq(str, "Float : %.2a :)");
     free(str);
 }

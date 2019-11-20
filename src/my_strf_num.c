@@ -34,3 +34,12 @@ void my_strf_float(va_list args, char **str)
     *str = my_stradd(*str, tmp);
     free(tmp);
 }
+
+void my_strf_float_sci(va_list args, char **str)
+{
+    double i = va_arg(args, double);
+    char *tmp = my_ftoa_sci(i, 6);
+
+    *str = my_stradd(*str, tmp);
+    free(tmp);
+}

@@ -15,6 +15,7 @@ static const op_t ptr_tab[] = {
     {"c", &my_strf_char},
     {"s", &my_strf_str},
     {"f", &my_strf_float},
+    {"e", &my_strf_float_sci},
     {"x", &my_strf_hexa},
     {"X", &my_strf_uhexa},
     {"o", &my_strf_octal},
@@ -23,10 +24,43 @@ static const op_t ptr_tab[] = {
     {NULL, NULL}
 };
 
+static const op_arg_t ptr_arg_tab[] = {
+    {"d", &my_strf_fp_int},
+    {"i", &my_strf_fp_int},
+    {"u", &my_strf_fp_uint},
+    {"f", &my_strf_fp_float},
+    {"e", &my_strf_fp_float_sci},
+    {NULL, NULL}
+};
+
+static size_t call_with_parameters(char const *opt, char **str, va_list args)
+{
+    size_t pos = 2;
+    char *tmp;
+    size_t nb;
+    size_t len;
+
+    for (; opt[pos] >= '0' && opt[pos] <= '9'; ++pos);
+    tmp = my_strndup(opt + 2, pos - 2);
+    nb = my_atou(tmp);
+    free(tmp);
+    for (byte_t i = 0; ptr_arg_tab[i].str; ++i) {
+        len = my_strlen(ptr_arg_tab[i].str);
+        if (my_strncmp(opt + pos, ptr_arg_tab[i].str, len)) {
+            ptr_arg_tab[i].ptr(args, str, nb);
+            return (pos + len);
+        }
+    }
+    *str = my_strnadd(*str, opt, pos);
+    return (pos);
+}
+
 static size_t call_function(char const *opt, char **str, va_list args)
 {
     size_t len;
 
+    if (opt[1] == '.')
+        return (call_with_parameters(opt, str, args));
     for (byte_t i = 0; ptr_tab[i].str; ++i) {
         len = my_strlen(ptr_tab[i].str);
         if (my_strncmp(opt + 1, ptr_tab[i].str, len)) {

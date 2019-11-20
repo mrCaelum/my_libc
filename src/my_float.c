@@ -67,3 +67,23 @@ char *my_ftoa(double nb, size_t digits)
     free(tmp);
     return (str);
 }
+
+char *my_ftoa_sci(double nb, size_t digits)
+{
+    char *str = NULL;
+    char *tmp = NULL;
+    size_t integer;
+    size_t decimal;
+    int power_lvl = 0;
+
+    for (; nb >= 10; ++power_lvl, nb /= 10);
+    for (; nb < 1; --power_lvl, nb *= 10);
+    tmp = my_ftoa(nb, digits);
+    str = my_stradd(str, tmp);
+    free(tmp);
+    str = my_stradd(str, power_lvl < 0 ? "e" : "e+");
+    tmp = my_itoa(power_lvl);
+    str = my_stradd(str, tmp);
+    free(tmp);
+    return (str);
+}

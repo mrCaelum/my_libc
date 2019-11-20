@@ -52,6 +52,7 @@
     /* MY_FLOAT.C */
     double my_atof(char const *);
     char *my_ftoa(double, size_t);
+    char *my_ftoa_sci(double, size_t);
 
     /* MY_BASES.C */
     char *my_tobase(size_t, char const *);
