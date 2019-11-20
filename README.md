@@ -97,7 +97,8 @@ char *my_strf(char const *, ...);
 ```
 Creates a string with the `printf` syntax.
 ###### Supported flags :
-- `%d` / `%i`
+- `%d`
+- `%i`
 - `%u`
 - `%f`
 - `%e`
@@ -160,7 +161,7 @@ Converts a unsigned decimal number into a string in the given base.
 ```c
 my_tobase(12, "01");
 ```
-This will give `12` in binary => `1100`.
+This will give `12` in binary => `1100` as a string.
 
 #### my_power :
 ```c
