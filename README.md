@@ -100,6 +100,7 @@ Creates a string with the `printf` syntax.
 - `%d` / `%i`
 - `%u`
 - `%f`
+- `%e`
 - `%c`
 - `%s`
 - `%x`
@@ -143,6 +144,12 @@ Converts a string into a floating point number.
 char *my_ftoa(double, size_t);
 ```
 Converts a floating point number into a string with the given number of digits.
+
+#### my_ftoa_sci :
+```c
+char *my_ftoa_sci(double, size_t);
+```
+Converts a floating point number into a string in scientific notation with the given number of digits.
 
 #### my_tobase :
 ```c
