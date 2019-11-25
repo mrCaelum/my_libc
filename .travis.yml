@@ -1,6 +1,0 @@
-language: c
-install: make criterion
-compiler: gcc
-script:
-  - make
-  - make tests_run
