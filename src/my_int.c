@@ -22,7 +22,7 @@ int my_atoi(char const *str)
     for (; str[pos]; ++pos) {
         if (str[pos] < '0' || str[pos] > '9')
             return (0);
-        i = (i * 10) + (str[pos] - 48);
+        i = (i * 10) + (str[pos] - '0');
     }
     if (is_neg)
         i = -i;
@@ -43,8 +43,8 @@ char *my_itoa(int i)
     str = malloc(len + 1);
     str[len] = 0;
     for (len -= 1; len > is_neg; --len, i /= 10)
-        str[len] = i % 10 + 48;
-    str[len] = i % 10 + 48;
+        str[len] = i % 10 + '0';
+    str[len] = i % 10 + '0';
     if (is_neg)
         str[0] = '-';
     return (str);
@@ -60,7 +60,7 @@ size_t my_atou(char const *str)
     for (; str[pos]; ++pos) {
         if (str[pos] < '0' || str[pos] > '9')
             return (0);
-        i = (i * 10) + (str[pos] - 48);
+        i = (i * 10) + (str[pos] - '0');
     }
     return (i);
 }
@@ -75,7 +75,7 @@ char *my_utoa(size_t i)
     str = malloc(len + 1);
     str[len] = 0;
     for (len -= 1; len > 0; --len, i /= 10)
-        str[len] = i % 10 + 48;
-    str[len] = i % 10 + 48;
+        str[len] = i % 10 + '0';
+    str[len] = i % 10 + '0';
     return (str);
 }
