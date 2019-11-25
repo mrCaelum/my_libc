@@ -1,5 +1,5 @@
 language: c
-install: make
+install: make criterion
 compiler: gcc
 script:
   - make
