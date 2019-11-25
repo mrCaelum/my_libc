@@ -24,9 +24,7 @@ int my_atoi(char const *str)
             return (0);
         i = (i * 10) + (str[pos] - '0');
     }
-    if (is_neg)
-        i = -i;
-    return (i);
+    return (is_neg ? -i : i);
 }
 
 char *my_itoa(int i)
