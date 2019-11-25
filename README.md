@@ -162,7 +162,7 @@ Converts a floating point number into a string in scientific notation with the g
 char *my_tobase(size_t, char const *);
 ```
 Converts a unsigned decimal number into a string in the given base.
-###### Exemple:
+###### Example:
 ```c
 my_tobase(12, "01");
 ```
