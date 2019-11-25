@@ -10,6 +10,11 @@ This will create a static library named `my_libc.a` that you can include to your
 $ gcc -o [outputfile] my_libc.a [sources]
 ```
 
+## Tests
+```
+$ make tests_run
+```
+
 ## Functions
 
 #### my_strlen :
