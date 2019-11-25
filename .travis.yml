@@ -1,3 +1,6 @@
 language: c
 install: make
 compiler: gcc
+script:
+  - make
+  - make tests_run
