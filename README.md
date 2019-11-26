@@ -1,6 +1,8 @@
 # my_libc
 *Epitech | Tek1*
 
+[![Build Status](https://travis-ci.org/mrCaelum/my_libc.svg?branch=master)](https://travis-ci.org/mrCaelum/my_libc)
+
 ## Build
 ```
 $ make
